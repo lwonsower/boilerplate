@@ -1,5 +1,11 @@
 const path = require("path");
 const webpack = require("webpack");
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+
+const htmlPlugin = new HtmlWebPackPlugin({
+  template: "./src/client/index.html",
+  filename: "./index.html"
+});
 
 module.exports = {
   entry: [
@@ -16,8 +22,7 @@ module.exports = {
   output: {
   	path: __dirname,
   	filename: "bundle.js",
-  	path: path.resolve(__dirname, "dist"),
-    publicPath: "/"
+  	path: path.resolve(__dirname, "dist")
   },
   mode: "production",
   module: {
@@ -48,4 +53,5 @@ module.exports = {
   performance: {
     hints: false,
   },
+  plugins: [htmlPlugin],
 };

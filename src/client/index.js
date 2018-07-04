@@ -4,7 +4,7 @@ import { Router, IndexRoute, Route } from "react-router";
 
 import Root from "./components/Root.js";
 
-React.render(
-  Root,
+ReactDOM.render(
+  <Root />,
   document.getElementById("app")
 );
