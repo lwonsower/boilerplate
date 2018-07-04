@@ -1,23 +1,22 @@
-const express 	= require('express');
-const webpack 	= require('webpack');
-const config 		= require('../../webpack.config');
-const path      = require('path');
+const express 	= require("express");
+const webpack 	= require("webpack");
+const config 		= require("../../webpack.config");
+const path      = require("path");
 
 const app 			= express();
 const compiler  = webpack(config);
+const port      = 3000;
+const dist      = path.join(__dirname, "../../dist");
 
-app.use(require('webpack-dev-middleware')(compiler, {
-	noInfo: true,
-	publicPath: config.output.path,
-}));
+app.use(express.static(dist));
 
-app.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname, '../../dist/index.html'))
+app.get("*", (req, res) => {
+	res.sendFile(path.join(dist, "index.html"))
 });
 
-app.listen(3000, 'localhost', (err) => {
+app.listen(port, "localhost", (err) => {
 	if (err) {
 		return console.log(err);
 	}
-	console.log('Listening on port 3000');
+	console.log(`Listening on port ${port}`);
 });
