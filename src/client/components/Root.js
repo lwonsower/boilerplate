@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class Root extends Component {
   constructor(props) {
@@ -8,7 +8,9 @@ export default class Root extends Component {
 
   render() {
     return (
-      <div>Everything goes in here</div>
+      <div>
+        Everything goes in here
+      </div>
     );
   }
 }

@@ -1,28 +1,26 @@
 const path = require("path");
-const webpack = require("webpack");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 const htmlPlugin = new HtmlWebPackPlugin({
   template: "./src/client/index.html",
-  filename: "./index.html"
+  filename: "./index.html",
 });
 
 module.exports = {
   entry: [
-  	"./src/client/index.js"
+    "./src/client/index.js",
   ],
   devServer: {
     port: 3000,
     open: true,
     proxy: {
-        "/api": "http://localhost:8080"
-    }
+      "/api": "http://localhost:8080",
+    },
   },
   devtool: "eval-source-map",
   output: {
-  	path: __dirname,
-  	filename: "bundle.js",
-  	path: path.resolve(__dirname, "dist")
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "dist"),
   },
   mode: "production",
   module: {
@@ -48,7 +46,7 @@ module.exports = {
         test: /\.(png|jp(e*)g|svg)$/,
         loaders: ["url-loader"],
       },
-    ]
+    ],
   },
   performance: {
     hints: false,
